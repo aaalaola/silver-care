@@ -29,7 +29,12 @@
 </div>
 <script>
   var sent = 0;
+  var last = 0;
+  var COOLDOWN = 5000;
   document.getElementById("sos").addEventListener("click", function () {
+    var now = Date.now();
+    if (now - last < COOLDOWN) return;
+    last = now;
     sent += 1;
     document.getElementById("count").textContent = sent;
     var li = document.createElement("li");
