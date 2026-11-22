@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>银龄智友 · 求助按钮体验</title>
+<style>
+  body { margin:0; background:#f4f1ea; font-family:-apple-system,"PingFang SC",sans-serif; display:flex; justify-content:center; padding:32px 16px; }
+  .phone { width:360px; background:#fff; border-radius:28px; box-shadow:0 18px 40px rgba(0,0,0,.14); padding:24px; }
+  h1 { font-size:17px; margin:0 0 4px; }
+  .sub { font-size:13px; color:#8a8378; margin-bottom:22px; }
+  #sos { width:100%; padding:28px; font-size:22px; font-weight:700; color:#fff; background:#c0392b; border:0; border-radius:20px; cursor:pointer; letter-spacing:2px; }
+  #sos:active { transform:scale(.98); }
+  .tip { font-size:12px; color:#a09889; text-align:center; margin-top:10px; }
+  .log { margin-top:22px; border-top:1px solid #eee; padding-top:14px; }
+  .log b { font-size:13px; }
+  .log li { font-size:13px; color:#555; margin-top:6px; }
+</style>
+</head>
+<body>
+<div class="phone">
+  <h1>妈妈端 · 首页</h1>
+  <div class="sub">按一下，家人立刻收到</div>
+  <button id="sos">求 助</button>
+  <div class="tip">手抖连按也没关系</div>
+  <div class="log">
+    <b>家属手机收到：<span id="count">0</span> 条</b>
+    <ul id="list"></ul>
+  </div>
+</div>
+<script>
+  var sent = 0;
+  document.getElementById("sos").addEventListener("click", function () {
+    sent += 1;
+    document.getElementById("count").textContent = sent;
+    var li = document.createElement("li");
+    li.textContent = new Date().toLocaleTimeString("zh-CN", { hour12: false }) + " 妈妈按下了求助";
+    document.getElementById("list").prepend(li);
+  });
+</script>
+</body>
+</html>
